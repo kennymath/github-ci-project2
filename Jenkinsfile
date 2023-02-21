@@ -26,5 +26,14 @@ pipeline{
 	         
 	       }
         }
+        stage('Git Checkout SCM'){
+            steps{
+                script{
+                    git credentialsId: 'GitHub-id',
+                    url: 'https://github.com/kennymath/github-ci-project2.git',
+                    branch: 'main'
+                }
+            }
+        }
     }
 }    
