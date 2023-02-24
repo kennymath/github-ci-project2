@@ -73,5 +73,22 @@ pipeline{
                 }
             }
         }
+        stage(' Push the Changed Deployment File Git '){
+            steps{
+                script{
+                    sh """
+                     git config --global user.name "kennymath"
+                     git config --global user.email mathias.kenneth@yahoo.com
+                     git add deployment.yml
+                     git commit -m "updated deployment.yml file"
+                    """
+                    withCredentials([gitUsernamePassword(credentialsId: 'GitHub-id', gitToolName: 'Default')]) {
+
+                     sh "git push https://github.com/kennymath/github-ci-project2.git main"
+
+                    }
+                }
+            }
+        }
     }
 }    
