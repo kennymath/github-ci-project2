@@ -51,6 +51,14 @@ pipeline{
 			sh 'cat nmap'
 		    }
 	    }
+        stage ('Dynamic Application Security Testing (DAST)') {
+		  
+		    	steps {
+                    script{
+                       sh 'docker run -t owasp/zap2docker-stable zap-baseline.py -t http://10.0.0.209:8080/ || true'
+                    }
+			    }
+			}
         stage('Build Docker Image'){
             steps{
                 script{
