@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: flask-app-container
-        image: kentable/gitops-app:13
+        image: kentable/gitops-app:14
         resources:
           limits:
             memory: "128Mi"
